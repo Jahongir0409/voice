@@ -4,14 +4,14 @@ let SpeechRecognition = window.webkitSpeechRecognition
 let voice = new SpeechRecognition()
 voice.lang = "en-En"
 voice.continuous = false
-voice.start()
 
 button.onclick = () => {
 	voice.start ()
 
 	voice.onresult = (event) => {
 		let result = event.results[0][0]['transcript']
-		heading.textContent = result
+		document.body.style.backgroundColor = result.replace(/\s/g,"")
+		
 	}
 	voice.onspeechend = function() {
 		voice.stop()
